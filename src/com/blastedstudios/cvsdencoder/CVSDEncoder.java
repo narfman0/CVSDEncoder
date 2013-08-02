@@ -25,7 +25,7 @@ public class CVSDEncoder {
 			for(int i=0; i<8*bytesPerSample; i++){
 				int actualByte = actual[actualIndex + i];
 				for(int bytesPerSampleIndex = 1; bytesPerSampleIndex < bytesPerSample; bytesPerSampleIndex++)
-					actualByte = (actualByte << 8) + actual[actualIndex + ++i];
+					actualByte = (actualByte << 8) + (actual[actualIndex + ++i] & 0xff);
 				cvsdByte <<= 1;
 				lastThree = ((lastThree & 3) << 1);
 				if(accum < actualByte){
